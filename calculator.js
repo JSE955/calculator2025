@@ -1,6 +1,19 @@
 let operator = '';
 let operand1 = 0;
 let operand2 = 0;
+let displayValue = 0;
+
+const display = document.querySelector('.display');
+
+
+// Allow digit buttons to update display
+const digitButtons = document.querySelectorAll('.digit');
+digitButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        display.textContent += e.target.textContent;
+        displayValue = Number(display.textContent);
+    });
+});
 
 function add(a, b) {
     return a + b;
