@@ -21,6 +21,15 @@ const operators = document.querySelectorAll('.operator');
 operators.forEach((btn) => {
     btn.addEventListener('click', (e) => {
         if (operation.length === 3) operation = [];
+        if (operation.length === 2 && displayValue !== 'reset') {
+            operation.push(displayValue);
+            displayValue = operate(operation[1], operation[0], operation[2]);
+            display.textContent = displayValue;
+            operation = [];
+            operation.push(displayValue);
+            operation.push(e.target.textContent);
+            displayValue = 'reset';
+        }
         if (operation.length === 0) {
             operation.push(displayValue);
             operation.push(e.target.textContent);
