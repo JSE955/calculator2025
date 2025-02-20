@@ -17,6 +17,7 @@ digitButtons.forEach((btn) => {
     });
 });
 
+// Add appropriate calculation logic to operator buttons
 const operators = document.querySelectorAll('.operator');
 operators.forEach((btn) => {
     btn.addEventListener('click', (e) => {
@@ -38,15 +39,21 @@ operators.forEach((btn) => {
     });
 });
 
+// Add logic to equal button
 const equalButton = document.querySelector('.equal');
 equalButton.addEventListener('click', (e) => {
     if (operation.length === 2 && displayValue !== 'reset') {
         operation.push(displayValue);
-        console.log(operation);
         displayValue = operate(operation[1], operation[0], operation[2]);
-        console.log(displayValue);
         display.textContent = displayValue;
     }
+});
+
+const clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', () => {
+    operation = [];
+    let displayValue = 'reset';
+    display.textContent = '';
 });
 
 function add(a, b) {
